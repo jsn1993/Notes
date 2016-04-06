@@ -1,6 +1,6 @@
 <b>
 
-List、Tuple和Set
+List、Tuple、Dict和Set
 
 List是有序的集合，可以随时删除和添加其中的元素
 
