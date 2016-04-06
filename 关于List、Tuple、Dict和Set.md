@@ -1,7 +1,5 @@
 <b>
 
-List、Tuple、Dict和Set
-
 List是有序的集合，可以随时删除和添加其中的元素
 
 tuple和list非常类似，但是tuple一旦初始化就不能修改
