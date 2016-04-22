@@ -38,7 +38,19 @@ List转Set基本用不了什么时间，所以如果有需要求（集合，列�
 转化 l = list(s)  s = set(l)
 
 
---dict与string的转化--
-import ast
-ast.literal_eval("{'x':1, 'y':2}")
-=> {'y': 2, 'x': 1}
+
+redis数据处理相关：存入dict或list取出变成string的问题
+
+——dict与string的转化——
+
+    import ast
+    ast.literal_eval("{'x':1, 'y':2}")
+    => {'y': 2, 'x': 1}
+——list与string转化——
+
+    import ast
+    ast.literal_eval("{'x':[1,2]")['x']
+    => [1,2]
+
+所以，存入dict即可。
+
