@@ -37,11 +37,26 @@ GET方法支持非常高效、成熟的缓存，所以在很多情况下，你�
         PUT - unused
         POST - add a new order
         DELETE - unused
+    /orders/{id}
+        GET - get order details
+        PUT - update order
+        POST - add item
+        DELETE - cancel order
     /customers
         GET - list all customers
         PUT - unused
         POST - add a new customer
         DELETE - unused
+    /customers/{id}
+        GET - get customer details
+        PUT - update customer
+        POST - unused
+        DELETE - cancel customer
+    /customers/{id}/orders
+        GET - get all orders for customer
+        PUT - unused
+        POST - unused
+        DELETE - cancel all customer orders
 
 标识一个顾客的URI上的GET方法正好相当于getCustomerDetails操作。
 
