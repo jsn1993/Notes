@@ -32,36 +32,16 @@ REST 的应用可以充分地挖掘 HTTP 协议对缓存支持的能力。
 
 GET方法支持非常高效、成熟的缓存，所以在很多情况下，你甚至不需要向服务器发送请求。还可以肯定的是，GET方法具有幂等性[译注：指多个相同请求返回相同的结果]——如果你发送了一个GET请求没有得到结果，你可能不知道原因是请求未能到达目的地，还是响应在反馈的途中丢失了。幂等性保证了你可以简单地再发送一次请求解决问题。幂等性同样适用于PUT（基本的含义是“更新资源数据，如果资源不存在的话，则根据此URI创建一个新的资源”）和DELETE（你完全可以一遍又一遍地操作它，直到得出结论——删除不存在的东西没有任何问题）方法。POST方法，通常表示“创建一个新资源”，也能被用于调用任意过程，因而它既不安全也不具有幂等性。
 
-    getUser
-    addUser/{id}
-    updateUser
-    deleteUser
-
     /orders
         GET - list all orders
         PUT - unused
         POST - add a new order
         DELETE - unused
-    /orders/{id}
-        GET - get order details
-        PUT - update order
-        POST - add item
-        DELETE - cancel order
     /customers
         GET - list all customers
         PUT - unused
         POST - add a new customer
         DELETE - unused
-    /customers/{id}
-        GET - get customer details
-        PUT - update customer
-        POST - unused
-        DELETE - cancel customer
-    /customers/{id}/orders
-        GET - get all orders for customer
-        PUT - unused
-        POST - unused
-        DELETE - cancel all customer orders
 
 标识一个顾客的URI上的GET方法正好相当于getCustomerDetails操作。
 
