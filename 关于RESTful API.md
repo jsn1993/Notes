@@ -113,13 +113,17 @@ GET方法支持非常高效、成熟的缓存，所以在很多情况下，你�
 
 当然，为了要实现这一系列的功能，一个不可或缺的东西就是超文本（hypertext）或者说超媒体类型（hypermedia type）。这绝对不是一个简简单单的媒体类型（例如，JSON属性列表）可以做到的。
 
-普通的使用GET、POST返回JSON的这种API属于其第二层HTTP Verbs，RESTful的API属于第三层Hypermedia Controls。相比第二层，第三层的Web服务具有一个很明显的优势，客户端与服务端交互解耦。服务端可以仅仅提供单一的入口，客户端只要依次“遍历”超链接，就可以完成对应的合法业务逻辑。当资源的转换规则发送变化时（如某一页由于历史文章被删除了而没有下一页，又或者某篇文章转储在了其他网站上），客户端不需要作额外的更新升级，只需要升级服务端返回的超链接即可。
+大部分号称REST的API实际上属于其第二层HTTP Verbs，并没有达到Richardson成熟度模型的第三个级别：Hypermedia Controls。 而REST的发明者Roy Fielding博士更是直言“Hypermedia作为应用引擎”是REST的前提， 这不是一个可选项，如果没有Hypermedia，那就不是REST。相比第二层，第三层的Web服务具有一个很明显的优势，客户端与服务端交互解耦。服务端可以仅仅提供单一的入口，客户端只要依次“遍历”超链接，就可以完成对应的合法业务逻辑。当资源的转换规则发送变化时（如某一页由于历史文章被删除了而没有下一页，又或者某篇文章转储在了其他网站上），客户端不需要作额外的更新升级，只需要升级服务端返回的超链接即可。
 
     {
       "links": {
         "self": "http://example.com/articles",
-        "next": "http://example.com/articles?page[offset]=2",
+        "next": "http://example.com/articles?page[offset]=2",  # 上一页下一页
         "last": "http://example.com/articles?page[offset]=10"
+        or
+        "self": "http://localhost:57900/orders/123456",  # get请求
+        "cancel": "http://localhost:57900/orders/123456",  # delete请求
+        "payment": "http://localhost:57900/orders/123456/payments"
       },
       "data": [{
         "type": "articles",
